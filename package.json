@@ -5,10 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "developmentDev": "cross-env NODE_ENV=developmentDev vue-cli-service build",
+    "developmentTest": "cross-env NODE_ENV=developmentTest vue-cli-service build",
+    "release": "cross-env NODE_ENV=release vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "cross-env": "^7.0.2",
+    "element-ui": "^2.3.6",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
@@ -19,9 +24,12 @@
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-vuex": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
+    "vue-cli-plugin-axios": "~0.0.4",
+    "vue-cli-plugin-element-ui": "~1.1.4",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
