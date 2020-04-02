@@ -91,7 +91,7 @@ export default function fetch(options) {
       }
 
     }).catch(error => {
-      alert('请求超时');
+      this.$message.info('请求超时');
       reject(error)
     })
   })

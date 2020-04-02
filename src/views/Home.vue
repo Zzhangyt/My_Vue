@@ -19,6 +19,14 @@
       <br>
       <span>{{vuexValue}}</span>
     </div>
+    <div class="box">
+      <div v-for="item in checkList" :key="item.tit">
+        <span>{{item.value}}</span>
+        <input type="checkbox">
+        <button @click="del">删除</button>
+      </div>
+      {{num}}
+    </div>
   </div>
 </template>
 
@@ -65,10 +73,28 @@ export default {
           ]
         }
       ],
+      checkList:[
+        {
+          tit:'1',
+          value:100
+        },
+        {
+          tit:'2',
+          value:200
+        }
+      ],
       type:false
+    };
+  },
+  computed:{
+    num(){
+      let num = 0;
+      this.checkList.forEach((item)=>{
+        num += item.value;
+      });
+      return num
     }
   },
-  computed:{},
   components: {},
   mounted() {
     this.data.forEach(()=>{
@@ -77,6 +103,9 @@ export default {
     // this.animation();
   },
   methods:{
+    del() {
+      this.checkList = [100];
+    },
     change(index, index2) {
       if(this.status.length < index){
         this.status.length = index;
@@ -193,6 +222,7 @@ export default {
   .home{
     display: flex;
     .box{
+      color: #0D1F30;
       width: 300px;
       height: 300px;
       .hot{
