@@ -15,6 +15,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
     "element-ui": "^2.3.6",
+    "jquery": "^3.5.1",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "scss": "^0.2.4",

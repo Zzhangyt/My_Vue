@@ -27,11 +27,13 @@
       </div>
       {{num}}
     </div>
+    <div class="box">
+      <router-link tag="button" to="/about" class="to-about">to About</router-link>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'Home',
   data(){
@@ -227,6 +229,17 @@ export default {
       height: 300px;
       .hot{
         color: $theme-color;
+      }
+      .to-about{
+        width: 100px;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        background-color: #42b983;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 2px;
+        margin-top: 50px;
       }
     }
   }
