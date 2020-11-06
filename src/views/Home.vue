@@ -2,9 +2,10 @@
   <div class="home">
     <div class="box">
       <div v-for="(item,index) in data" :key="index">
-        <span>{{item.name}}</span>
+        <span>{{ item.name }}</span>
         <div v-for="(child,index2) in item.list" :key="index2">
-          <span :class=" (status[index] !== 'undefined' && status[index] === index2)  ? 'hot' : ''" @click="change(index, index2)"><i class="el-icon-delete"/>{{child.age}}</span>
+          <span :class=" (status[index] !== 'undefined' && status[index] === index2)  ? 'hot' : ''"
+                @click="change(index, index2)"><i class="el-icon-delete"/>{{ child.age }}</span>
         </div>
       </div>
     </div>
@@ -17,81 +18,119 @@
       <br>
       <button @click="take">读取vuex里的count</button>
       <br>
-      <span>{{vuexValue}}</span>
+      <span>{{ vuexValue }}</span>
     </div>
     <div class="box">
       <div v-for="item in checkList" :key="item.tit">
-        <span>{{item.value}}</span>
+        <span>{{ item.value }}</span>
         <input type="checkbox">
         <button @click="del">删除</button>
       </div>
-      {{num}}
+      {{ num }}
     </div>
     <div class="box">
       <router-link tag="button" to="/about" class="to-about">to About</router-link>
+    </div>
+    <div style="color: #000">
+      <button @click="getAddress">address</button>
+      <div id='allmap' style="width: 200px;height: 200px"></div>
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 export default {
   name: 'Home',
-  data(){
-    return{
+  data() {
+    return {
       status: [],
-      vuexValue:0,
-      data:[
+      vuexValue: 0,
+      data: [
         {
-          name:'一级-1',
-          list:[
+          name: '一级-1',
+          list: [
             {
-              age:'1'
+              age: '1'
             },
             {
-              age:'2'
+              age: '2'
             }
           ]
         },
         {
-          name:'一级-2',
-          list:[
+          name: '一级-2',
+          list: [
             {
-              age:'1'
+              age: '1'
             },
             {
-              age:'2'
+              age: '2'
             }
           ]
         },
         {
-          name:'一级-3',
-          list:[
+          name: '一级-3',
+          list: [
             {
-              age:'1'
+              age: '1'
             },
             {
-              age:'2'
+              age: '2'
             }
           ]
         }
       ],
-      checkList:[
+      checkList: [
         {
-          tit:'1',
-          value:100
+          tit: '1',
+          value: 100
         },
         {
-          tit:'2',
-          value:200
+          tit: '2',
+          value: 200
         }
       ],
-      type:false
+      type: false,
+      treeHalfList: [
+        {
+          name: 'join',
+          age: 12,
+          code: '1',
+          children: [
+            {
+              name: 'levi',
+              age: 13,
+              code: '2',
+            },
+            {
+              name: 'Li',
+              age: 14,
+              code: '3',
+            },
+            {
+              name: 'Zzhang',
+              age: 15,
+              code: '4',
+            }
+          ]
+        }
+      ],
+      checkedData: [
+        {
+          name: 'Zzhang',
+          age: 15,
+          code: '4',
+        }
+      ],
+      address:'',
+      lngLat:''
     };
   },
-  computed:{
-    num(){
+  computed: {
+    num() {
       let num = 0;
-      this.checkList.forEach((item)=>{
+      this.checkList.forEach((item) => {
         num += item.value;
       });
       return num
@@ -99,17 +138,36 @@ export default {
   },
   components: {},
   mounted() {
-    this.data.forEach(()=>{
+    this.data.forEach(() => {
       this.status.push(0)
     });
+    this.getList()
+    this.getLngLat()
     // this.animation();
   },
-  methods:{
+  methods: {
+    getAddress(){
+      console.log(his.address,this.lngLat.lng,this.lngLat.lat);
+    },
+    getLngLat() {
+      let that = this,point = '',geoc = new BMap.Geocoder();
+      function myFun(result){
+        point = new BMap.Point(result.center.lng,result.center.lat);
+        that.lngLat = point;
+        geoc.getLocation(point, function(rs){
+          let addComp = rs.addressComponents
+          that.address = `${addComp.province}、${addComp.city}、 ${addComp.district}、 ${addComp.street}、 ${addComp.streetNumber}`;
+          console.log(that.lngLat.lng,that.lngLat.lat,that.address);
+        },0);
+      }
+      let myCity = new BMap.LocalCity();
+      myCity.get(myFun);
+    },
     del() {
       this.checkList = [100];
     },
     change(index, index2) {
-      if(this.status.length < index){
+      if (this.status.length < index) {
         this.status.length = index;
       }
       let copyArray = JSON.parse(JSON.stringify(this.status));
@@ -117,19 +175,19 @@ export default {
       this.$set(this, 'status', copyArray);
     },
     /*加*/
-    add(){
-      this.$store.commit('add',10)
+    add() {
+      this.$store.commit('add', 10)
     },
     /*减*/
-    reduce(){
-      this.$store.commit('reduce',5)
+    reduce() {
+      this.$store.commit('reduce', 5)
     },
     /*存*/
-    save(){
-      this.$store.commit('save',this.$store.state.count)
+    save() {
+      this.$store.commit('save', this.$store.state.count)
     },
     /*取*/
-    take(){
+    take() {
       this.vuexValue = this.$store.state.value;
     },
     animation() {
@@ -144,8 +202,8 @@ export default {
 
         function l() {
           var i = j("script"),
-            w = i.length,
-            v = i[w - 1];
+              w = i.length,
+              v = i[w - 1];
           return {
             l: w,
             z: o(v, "zIndex", -1),
@@ -177,18 +235,18 @@ export default {
         }
 
         var u = document.createElement("canvas"),
-          s = l(),
-          c = "c_n" + s.l,
-          e = u.getContext("2d"),
-          r, n,
-          m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-            function (i) {
-              window.setTimeout(i, 1000 / 45)
-            }, a = Math.random, f = {
-            x: null,
-            y: null,
-            max: 20000
-          };
+            s = l(),
+            c = "c_n" + s.l,
+            e = u.getContext("2d"),
+            r, n,
+            m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function (i) {
+                  window.setTimeout(i, 1000 / 45)
+                }, a = Math.random, f = {
+              x: null,
+              y: null,
+              max: 20000
+            };
         u.id = c;
         u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
         j("body")[0].appendChild(u);
@@ -200,9 +258,9 @@ export default {
         };
         for (var t = [], p = 0; s.n > p; p++) {
           var h = a() * r,
-            g = a() * n,
-            q = 2 * a() - 1,
-            d = 2 * a() - 1;
+              g = a() * n,
+              q = 2 * a() - 1,
+              d = 2 * a() - 1;
           t.push({
             x: h,
             y: g,
@@ -215,32 +273,64 @@ export default {
           b()
         }, 100)
       }();
+    },
+    getList() {
+      let ArrayList = JSON.parse(JSON.stringify(this.treeHalfList));
+      let arr = [];
+      ArrayList.forEach((child) => {
+        if (child.children) {
+          this.checkedData.forEach((item) => {
+            let childList = JSON.parse(JSON.stringify(child.children))
+            childList.forEach((e) => {
+              if (JSON.stringify(e) !== JSON.stringify(item)) {
+                // console.log(e, 'YYYYYYYYYYYYYYYYYYY')
+                let index = childList.indexOf(e)
+                if (index > -1) {
+                  // console.log('splice111111', child.children)
+                  // child.children.splice(index, 1);
+                } else {
+                  arr.push(e);
+                  // console.log(arr);
+                  child.children = arr;
+                  // console.log('splice22222222', child.children)
+                }
+              } else {
+                // console.log(e, 'NNNNNNNNNNNNNNNNN');
+              }
+            })
+          })
+        }
+      })
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-  @import "src/assets/styles/variable";
-  .home{
-    display: flex;
-    .box{
-      color: #0D1F30;
-      width: 300px;
-      height: 300px;
-      .hot{
-        color: $theme-color;
-      }
-      .to-about{
-        width: 100px;
-        height: 36px;
-        text-align: center;
-        line-height: 36px;
-        background-color: #42b983;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 2px;
-        margin-top: 50px;
-      }
+@import "src/assets/styles/variable";
+
+.home {
+  display: flex;
+
+  .box {
+    color: #0D1F30;
+    width: 300px;
+    height: 300px;
+
+    .hot {
+      color: $theme-color;
+    }
+
+    .to-about {
+      width: 100px;
+      height: 36px;
+      text-align: center;
+      line-height: 36px;
+      background-color: #42b983;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: 50px;
     }
   }
+}
 </style>

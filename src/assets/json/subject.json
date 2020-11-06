@@ -1,0 +1,85 @@
+{
+  "name": "问卷",
+  "version": "1.0.0",
+  "content": [
+    {
+      "name": "居家信息",
+      "subjectList": [
+        {
+          "id": "1",
+          "title": "姓名",
+          "answers": [
+            {
+              "answersName": "",
+              "type": "input"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "性别",
+          "answers": [
+            {
+              "answersName": "男",
+              "type": "radio"
+            },
+            {
+              "answersName": "女",
+              "type": "radio"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "饮食习惯",
+          "answers": [
+            {
+              "answersName": "素食",
+              "type": "checkbox"
+            },
+            {
+              "answersName": "其他",
+              "type": "input"
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": "和谁在一起居住",
+          "answers": [
+            {
+              "answersName": "独居",
+              "type": "radio"
+            },
+            {
+              "answersName": "非独居",
+              "type": "radio",
+              "childrenText": "一起居住的有：",
+              "children": [
+                {
+                  "answersName": "配偶",
+                  "type": "checkbox"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "基本项目",
+      "subjectList": [
+        {
+          "id": "5",
+          "title": "能否完成平地连续步行或移动5米",
+          "answers": [
+            {
+              "answersName": "不需要借助任何工具，能够完成",
+              "type": "radio"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

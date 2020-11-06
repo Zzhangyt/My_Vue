@@ -28,13 +28,13 @@
 
           var dots = {
             nb: 1100,
-            distance: 100,
-            d_radius: 150,
+            distance: 0,
+            d_radius: 0,
             array: []
           };
 
           function colorValue(min) {
-            return Math.floor(Math.random() * 255 + min);
+            return Math.floor(Math.random() * 500 + min);
           }
 
           function createColorStyle(r,g,b) {
@@ -144,15 +144,15 @@
             requestAnimationFrame(animateDots);
           }
 
-          $('canvas').on('mousemove', function(e){
-            mousePosition.x = e.pageX;
-            mousePosition.y = e.pageY;
-          });
-
-          $('canvas').on('mouseleave', function(){
-            mousePosition.x = canvas.width / 2;
-            mousePosition.y = canvas.height / 2;
-          });
+          // $('canvas').on('mousemove', function(e){
+          //   mousePosition.x = e.pageX;
+          //   mousePosition.y = e.pageY;
+          // });
+          //
+          // $('canvas').on('mouseleave', function(){
+          //   mousePosition.x = canvas.width / 2;
+          //   mousePosition.y = canvas.height / 2;
+          // });
 
           createDots();
           requestAnimationFrame(animateDots);

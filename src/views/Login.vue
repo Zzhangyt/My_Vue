@@ -1,7 +1,10 @@
 <template>
   <div class="height-full">
     <div class="login">
-      <el-button @click="login" type="primary">Login</el-button>
+      <div class="login_text">
+        <p class="login_title">瑶</p>
+<!--        <p class="login_next" @click="login">Next ~ </p>-->
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +31,24 @@
 <style lang="scss" scoped>
 .login{
   height: 100%;
-  background: url("../assets/images/bg.png") center center no-repeat;
-  background-size: cover;
+  display: flex;
+  align-items: center;
+  .login_text{
+    width: 100%;
+    margin-bottom: 170px;
+    .login_title{
+      font-size: 60px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .login_next{
+      font-size: 54px;
+      text-align: center;
+      cursor: pointer;
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
 }
 </style>
