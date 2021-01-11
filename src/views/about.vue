@@ -6,10 +6,13 @@
 
 <script>
   import $ from "jquery";
+  import Api from "@/api/Api";
+  // import axios from 'axios';
   export default {
     name: "about",
     mounted() {
-      this.draw()
+      this.draw();
+      this.createArticle();
     },
     methods:{
       draw(){
@@ -157,6 +160,20 @@
           createDots();
           requestAnimationFrame(animateDots);
         });
+      },
+      createArticle(){
+        let params = {
+          title: '1',
+          author: '1',
+          content: '1',
+          category: '1'
+        };
+        Api.createArticle({method: 'post', data: params}).then(res=>{
+          console.log(res);
+        })
+        // axios.post('/api/v1/article',params).then(res=>{
+        //   console.log(res);
+        // })
       }
     }
   };
@@ -167,7 +184,8 @@
   background-color: #000;
   height: 100%;
   canvas {
-    position: absolute;
+    left: 0;
+    position: relative;
   }
 }
 </style>

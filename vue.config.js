@@ -26,7 +26,15 @@ module.exports = {
   integrity: false,//是否在link和script标签上启用Subresource Integrity（SRI）
   devServer: {
     port:4000,
-    // proxy: 'http://localhost:4000',//可以是一个指向开发环境 API 服务器的字符串，开发环境下将 API 请求代理到 API 服务器的配置。
+    proxy: {
+      '/': {
+        target: 'http://localhost:7777',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/': ''
+        }
+      }
+    },//可以是一个指向开发环境 API 服务器的字符串，开发环境下将 API 请求代理到 API 服务器的配置。
     disableHostCheck: true
   },
   chainWebpack: config => {

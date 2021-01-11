@@ -89,7 +89,6 @@ export default function fetch(options) {
       }else {
         resolve(response)
       }
-
     }).catch(error => {
       this.$message.info('请求超时');
       reject(error)

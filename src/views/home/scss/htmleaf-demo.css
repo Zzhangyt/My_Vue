@@ -1,0 +1,53 @@
+/* icomoon */
+.icon-htmleaf-home-outline:before {
+	content: "\e5000";
+}
+
+.icon-htmleaf-arrow-forward-outline:before {
+	content: "\e5001";
+}
+
+@media screen and (max-width: 1024px) {
+	.htmleaf-header {
+		padding: 2em 10% 2em;
+	}
+	.htmleaf-header h1 {
+        font-size:1.4em;
+    }
+    .htmleaf-links{font-size: 1.4em}
+}
+
+@media screen and (max-width: 960px) {
+	.htmleaf-header {
+		padding: 2em 10% 2em;
+	}
+	.htmleaf-header h1 {
+        font-size:1.2em;
+    }
+    .htmleaf-links{font-size: 1.2em}
+    .related h3{font-size: 1em;}
+	.related a h3 {
+		font-size: 0.8em;
+	}
+}
+
+@media screen and (max-width: 766px) {
+	.htmleaf-header h1 {
+        font-size:1.3em;
+    }
+    .htmleaf-links{font-size: 1.3em}
+}
+
+@media screen and (max-width: 640px) {
+	.htmleaf-header {
+		padding: 2em 10% 2em;
+	}
+	.htmleaf-header h1 {
+        font-size:1em;
+    }
+    .htmleaf-links{font-size: 1em}
+    .related h3{font-size: 0.8em;}
+	.related a h3 {
+		font-size: 0.6em;
+	}
+}

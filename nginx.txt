@@ -1,0 +1,9 @@
+1、重启nginx
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+2、查看进程（是否启动）
+ps -ef |grep **（nginx\mysql）
+3、查找文件名
+find / -name **
+4、打开文件
+ cat /usr/local/nginx/conf/**
+
