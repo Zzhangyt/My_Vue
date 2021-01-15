@@ -11,7 +11,10 @@ if (process.env.NODE_ENV === 'development') {
   let _url  = '//wenzhou.dev.enesource.com';
   Config.baseUrl = _url + '/wenzhou'
 }else if (process.env.NODE_ENV === 'release'){
-  let _url  = 'http://localhost:7777';
-  Config.baseUrl = _url + ''
+  let _url  = '//60.205.170.107';
+  Config.baseUrl = _url + '/api/v1'
+}else {
+  let _url  = '//60.205.170.107';
+  Config.baseUrl = _url + '/api/v1'
 }
-export default Config
+export default Config;

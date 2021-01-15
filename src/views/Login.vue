@@ -7,7 +7,7 @@
           class="login_text">
         <p class="login_title"
            @click="login">
-          11</p>
+          瑶</p>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@
       <div class="tag_cloud">
         <!-- bo大小 co颜色 -->
         <a class="b01 co01" href="#">她想写的</a>
-        <a class="b02 co02" href="#">纪念品</a>
+        <a class="b02 co02" href="#">纪念</a>
         <a class="b03 co05" href="#">文章</a>
         <a class="b04 co02" href="#">照片</a>
         <a class="b03 co05" href="#">她要学的</a>
